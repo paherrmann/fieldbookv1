@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "Weather Data Summarizer",
+    "version": "1.0",
+    "description": "Extracts and summarizes weather data from MTBaker Ski Area.",
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "Weather Summary"
+    },
+    "host_permissions": [
+      "https://nwac.us/weatherdata/mtbakerskiarea/now/"
+    ],
+    "permissions": [
+      "declarativeNetRequest"
+    ],
+    "declarative_net_request": {
+      "rule_resources": [
+        {
+          "id": "ruleset_1",
+          "enabled": true,
+          "path": "rules.json"
+        }
+      ]
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://nwac.us/weatherdata/mtbakerskiarea/now/*"],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ]
+  }
+  
